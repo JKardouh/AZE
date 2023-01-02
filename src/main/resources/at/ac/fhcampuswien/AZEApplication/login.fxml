@@ -14,7 +14,7 @@
    <left>
       <AnchorPane prefHeight="400.0" prefWidth="214.0" BorderPane.alignment="CENTER">
          <children>
-            <ImageView fx:id="loginArtImageView" fitHeight="594.0" fitWidth="431.0" layoutX="-98.0" layoutY="-7.0" pickOnBounds="true" preserveRatio="true">
+            <ImageView fx:id="loginArtImageView" fitHeight="594.0" fitWidth="431.0" layoutX="-98.0" layoutY="-6.0" pickOnBounds="true" preserveRatio="true">
                <image>
                   <Image url="@../../../../../../../Images/loginart.jpg" />
                </image>
@@ -42,9 +42,9 @@
             </Label>
             <PasswordField fx:id="passwordTextField" layoutX="189.0" layoutY="348.0" promptText="Enter your password" />
             <TextField fx:id="usernameTextField" layoutX="189.0" layoutY="304.0" promptText="Enter your username" />
-            <Button fx:id="loginButton" layoutX="81.0" layoutY="428.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="261.0" style="-fx-background-color: #417274;" text="LOG IN" textFill="WHITE" />
+            <Button fx:id="loginButton" layoutX="81.0" layoutY="428.0" mnemonicParsing="false" onAction="#loginButtonOnClick" prefHeight="25.0" prefWidth="261.0" style="-fx-background-color: #417274;" text="LOG IN" textFill="WHITE" />
             <Button fx:id="cancelButton" layoutX="81.0" layoutY="480.0" mnemonicParsing="false" onAction="#cancelButtonOnClick" prefHeight="25.0" prefWidth="261.0" style="-fx-background-color: #417274;" text="CANCEL" textFill="WHITE" />
-            <Label layoutX="113.0" layoutY="393.0" textFill="#cd0000">
+            <Label fx:id="loginMessageLabel" layoutX="113.0" layoutY="393.0" textFill="#cd0000">
                <font>
                   <Font size="14.0" />
                </font>
