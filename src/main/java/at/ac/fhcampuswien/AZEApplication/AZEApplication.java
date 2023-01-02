@@ -1,4 +1,4 @@
-package at.ac.fhcampuswien.javacourse;
+package at.ac.fhcampuswien.AZEApplication;
 
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;

@@ -24,8 +24,8 @@ tasks.withType(JavaCompile) {
 }
 
 application {
-    mainModule = 'at.ac.fhcampuswien.javacourse'
-    mainClass = 'at.ac.fhcampuswien.javacourse.HelloApplication'
+    mainModule = 'at.ac.fhcampuswien.AZEApplication'
+    mainClass = 'at.ac.fhcampuswien.AZEApplication.HelloApplication'
 }
 
 javafx {

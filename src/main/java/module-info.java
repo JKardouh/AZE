@@ -6,6 +6,6 @@ module at.ac.fhcampuswien.javacourse {
     requires org.kordamp.ikonli.javafx;
     requires org.kordamp.bootstrapfx.core;
 
-    opens at.ac.fhcampuswien.javacourse to javafx.fxml;
-    exports at.ac.fhcampuswien.javacourse;
+    opens at.ac.fhcampuswien.AZEApplication to javafx.fxml;
+    exports at.ac.fhcampuswien.AZEApplication;
 }
