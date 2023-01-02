@@ -7,12 +7,12 @@ import javafx.stage.Stage;
 
 import java.io.IOException;
 
-public class JavaCourseApplication extends Application {
+public class AZEApplication extends Application {
     @Override
     public void start(Stage stage) throws IOException {
-        FXMLLoader fxmlLoader = new FXMLLoader(JavaCourseApplication.class.getResource("java-course-view.fxml"));
-        Scene scene = new Scene(fxmlLoader.load(), 320, 240);
-        stage.setTitle("Hello!");
+        FXMLLoader fxmlLoader = new FXMLLoader(AZEApplication.class.getResource("login.fxml"));
+        Scene scene = new Scene(fxmlLoader.load()); //get rid of fix dimensions
+        stage.setTitle("AZE");
         stage.setScene(scene);
         stage.show();
     }
