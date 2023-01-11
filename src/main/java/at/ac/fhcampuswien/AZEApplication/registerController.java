@@ -47,12 +47,11 @@ public class registerController implements Initializable {
     }
 
     public void registerButtonOnClick(ActionEvent event) throws SQLException {
-
         if(passwordTextField.getText().equals(confirmPasswordTextField.getText()) && !firstnameTextField.getText().isBlank() && !lastnameTextField.getText().isBlank() && !usernameTextField.getText().isBlank() && !passwordTextField.getText().isBlank()){
             if(!checkIfUsernameExistsAlready()){ //this was causing java.lang.reflect.InvocationTargetException WHYYY
                 registerEmployee();
             }
-            confirmPasswordLabel.setText("User Already Exists!");
+            else confirmPasswordLabel.setText("User Already Exists!");
         }else confirmPasswordLabel.setText("Unable to complete action, please check all entries.");
     }
 
@@ -69,6 +68,8 @@ public class registerController implements Initializable {
     }
 
     public void registerEmployee() throws SQLException {
+        confirmPasswordLabel.setText("");
+
         databaseConnector connector = new databaseConnector();
         Connection connect = connector.getConnection();
 

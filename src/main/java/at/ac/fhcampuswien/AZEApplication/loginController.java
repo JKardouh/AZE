@@ -50,7 +50,7 @@ public class loginController implements Initializable {
     }
 
     public void loginButtonOnClick(ActionEvent event) throws SQLException {
-        if(usernameTextField.getText().isBlank() == false && passwordTextField.getText().isBlank() == false) ValidateLogin();
+        if(!usernameTextField.getText().isBlank() && !passwordTextField.getText().isBlank()) ValidateLogin();
         else loginMessageLabel.setText("please enter your credentials!");
     }
 
