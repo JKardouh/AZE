@@ -50,12 +50,8 @@ public class loginController implements Initializable {
     }
 
     public void loginButtonOnClick(ActionEvent event) throws SQLException {
-        if(usernameTextField.getText().isBlank() == false && passwordTextField.getText().isBlank() == false){
-            ValidateLogin();
-        }
-        else {
-            loginMessageLabel.setText("please enter your credentials!");
-        }
+        if(usernameTextField.getText().isBlank() == false && passwordTextField.getText().isBlank() == false) ValidateLogin();
+        else loginMessageLabel.setText("please enter your credentials!");
     }
 
     @FXML
@@ -73,15 +69,12 @@ public class loginController implements Initializable {
             }
             else loginMessageLabel.setText("Incorrect username or password, please try again");
         }
-
-    }
-    public void createAccountForm() throws IOException {
-        Parent root = FXMLLoader.load(getClass().getResource("register.fxml"));
-        Stage registerStage = (Stage) cancelButton.getScene().getWindow();
-        registerStage.setScene(new Scene(root, 800, 588));
     }
 
     public void registerButtonOnClick(ActionEvent event) throws IOException {
-        createAccountForm();
+        //createAccountForm
+        Parent root = FXMLLoader.load(getClass().getResource("register.fxml"));
+        Stage registerStage = (Stage) cancelButton.getScene().getWindow();
+        registerStage.setScene(new Scene(root, 800, 588));
     }
 }

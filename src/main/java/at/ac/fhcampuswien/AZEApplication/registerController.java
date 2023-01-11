@@ -17,10 +17,7 @@ import javafx.stage.Stage;
 import java.io.File;
 import java.io.IOException;
 import java.net.URL;
-import java.sql.Connection;
-import java.sql.ResultSet;
-import java.sql.SQLException;
-import java.sql.Statement;
+import java.sql.*;
 import java.util.ResourceBundle;
 
 public class registerController implements Initializable {
@@ -50,25 +47,25 @@ public class registerController implements Initializable {
     }
 
     public void registerButtonOnClick(ActionEvent event) throws SQLException {
+
         if(passwordTextField.getText().equals(confirmPasswordTextField.getText()) && !firstnameTextField.getText().isBlank() && !lastnameTextField.getText().isBlank() && !usernameTextField.getText().isBlank() && !passwordTextField.getText().isBlank()){
-            //if(checkIfUsernameExistsAlready() == false){ //this is causing java.lang.reflect.InvocationTargetException
+            if(!checkIfUsernameExistsAlready()){ //this was causing java.lang.reflect.InvocationTargetException WHYYY
                 registerEmployee();
-            //}
+            }
+            confirmPasswordLabel.setText("User Already Exists!");
         }else confirmPasswordLabel.setText("Unable to complete action, please check all entries.");
     }
 
     private boolean checkIfUsernameExistsAlready() throws SQLException {
         databaseConnector connector = new databaseConnector();
-        Connection connectDB = connector.getConnection();
-        String result = "SELECT count(1) FROM worker_account WHERE username = '"+ usernameTextField.getText()+ "';";
+        Connection connect = connector.getConnection();
 
-        Statement statement = connectDB.createStatement();
+        String result = "SELECT count(1) FROM worker_account WHERE username = '"+ usernameTextField.getText() +"';";
+        Statement statement = connect.createStatement();
         ResultSet queryResult = statement.executeQuery(result);
 
-        if(queryResult.getInt(1) == 1){
-            return false;
-        }
-        return true;
+        if (queryResult.next()) return queryResult.getInt(1) == 1;
+        return false;
     }
 
     public void registerEmployee() throws SQLException {
@@ -84,5 +81,6 @@ public class registerController implements Initializable {
         Statement statement = connect.createStatement();
         statement.executeUpdate(insertStatement);
         registerMessageLabel.setText("Employee registered! you can go back to login Page!");
+        connect.close();
     }
 }
