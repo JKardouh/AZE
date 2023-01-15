@@ -29,6 +29,7 @@ public class userDashboard2Controller implements Initializable{
     @FXML private ChoiceBox<String> eventChoiceBox2;
     @FXML private DatePicker datePicker;
     @FXML private TextField timeTextField;
+    @FXML private TextField commentTextField;
     private final String[] eventType = {"come", "Go", "Home-office start","Home-office end"};
 
     @FXML
@@ -62,11 +63,11 @@ public class userDashboard2Controller implements Initializable{
         String date;
         if(datePicker.getValue() == null) date = "";
         else date= datePicker.getValue().toString();
-
-        //todo add comment in query
+        //comment
+        String comment = commentTextField.getText();
 
         String formattedDateTime = date + " " + time;
-        String insertQuery = "INSERT INTO timesheet_table (username, event_type, date, comment) VALUES ('"+ username+ "','"+ eventChoice +"','"+ formattedDateTime +"', '');";
+        String insertQuery = "INSERT INTO timesheet_table (username, event_type, date, comment) VALUES ('"+ username+ "','"+ eventChoice +"','"+ formattedDateTime +"', '"+comment+"');";
 
         validateQuery(formattedDateTime, insertQuery);
 

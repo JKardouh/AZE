@@ -65,7 +65,7 @@
             <Font name="System Bold" size="14.0" />
          </font>
       </Label>
-      <TextField layoutX="395.0" layoutY="401.0" prefHeight="83.0" prefWidth="206.0" promptText="Any comments? - Not mandatory :)" />
+      <TextField fx:id="commentTextField" layoutX="395.0" layoutY="401.0" prefHeight="83.0" prefWidth="206.0" promptText="Any comments? - Not mandatory :)" />
       <Button fx:id="saveDetailedCoverage" layoutX="463.0" layoutY="523.0" mnemonicParsing="false" onAction="#saveDetailedCoverageButtonOnClick" prefHeight="25.0" prefWidth="57.0" style="-fx-background-color: #417274;" text="Save" textFill="WHITE" />
       <Label fx:id="warningLabel" layoutX="380.0" layoutY="496.0" textAlignment="CENTER" textFill="#cd3939" />
    </children>
