@@ -18,6 +18,7 @@ import java.io.File;
 import java.io.IOException;
 import java.net.URL;
 import java.sql.*;
+import java.util.Objects;
 import java.util.ResourceBundle;
 
 public class registerController implements Initializable {
@@ -41,14 +42,14 @@ public class registerController implements Initializable {
 
     @FXML
     protected void closeButtonOnClick(ActionEvent event) throws IOException {
-        Parent root = FXMLLoader.load(getClass().getResource("login.fxml"));
+        Parent root = FXMLLoader.load(Objects.requireNonNull(getClass().getResource("login.fxml")));
         Stage registerStage = (Stage) closeButton.getScene().getWindow();
         registerStage.setScene(new Scene(root, 800, 588));
     }
 
     public void registerButtonOnClick(ActionEvent event) throws SQLException {
         if(passwordTextField.getText().equals(confirmPasswordTextField.getText()) && !firstnameTextField.getText().isBlank() && !lastnameTextField.getText().isBlank() && !usernameTextField.getText().isBlank() && !passwordTextField.getText().isBlank()){
-            if(!checkIfUsernameExistsAlready()){ //this was causing java.lang.reflect.InvocationTargetException WHYYY
+            if(!checkIfUsernameExistsAlready()){ //this was causing java.lang.reflect.InvocationTargetException
                 registerEmployee();
             }
             else confirmPasswordLabel.setText("User Already Exists!");

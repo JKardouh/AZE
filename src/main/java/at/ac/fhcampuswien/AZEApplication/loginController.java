@@ -21,6 +21,7 @@ import java.sql.Connection;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
+import java.util.Objects;
 import java.util.ResourceBundle;
 
 public class loginController implements Initializable {
@@ -31,7 +32,7 @@ public class loginController implements Initializable {
     @FXML private TextField usernameTextField;
     @FXML private PasswordField passwordTextField;
 
-    //without this we cant get the pictures because they need to be serialized.
+    //without this we cant get the pictures
     @Override
     public void initialize(URL location, ResourceBundle resources) {
         File logoImageFile = new File("Images/Logo.png");
@@ -74,14 +75,14 @@ public class loginController implements Initializable {
     }
 
     private void CreateUserDashboard() throws IOException {
-        Parent root = FXMLLoader.load(getClass().getResource("userDashboard.fxml"));
+        Parent root = FXMLLoader.load(Objects.requireNonNull(getClass().getResource("userDashboard.fxml")));
         Stage userDashboardStage = (Stage) cancelButton.getScene().getWindow();
         userDashboardStage.setScene(new Scene(root, 800, 588));
     }
 
     public void registerButtonOnClick(ActionEvent event) throws IOException {
         //createAccountForm
-        Parent root = FXMLLoader.load(getClass().getResource("register.fxml"));
+        Parent root = FXMLLoader.load(Objects.requireNonNull(getClass().getResource("register.fxml")));
         Stage registerStage = (Stage) cancelButton.getScene().getWindow();
         registerStage.setScene(new Scene(root, 800, 588));
     }
