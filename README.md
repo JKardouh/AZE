@@ -44,32 +44,32 @@ linked stage for user to collect working relevant data like start and end of wor
 ## mySQL workbench
 
 Make the DB with commands
-
+~~~~sql
 create database aze_db;
-
 CREATE TABLE `aze_db`.`worker_account` (
-
   `account_id` INT NOT NULL AUTO_INCREMENT,
-  
   `firstname` VARCHAR(45) NOT NULL,
-  
   `lastname` VARCHAR(45) NOT NULL,
-  
   `username` VARCHAR(45) NOT NULL,
-  
   `password` VARCHAR(45) NOT NULL,
-  
   PRIMARY KEY (`account_id`),
-  
   UNIQUE INDEX `account_id_UNIQUE` (`account_id` ASC) VISIBLE,
-  
   UNIQUE INDEX `username_UNIQUE` (`username` ASC) VISIBLE);
+
+CREATE TABLE `aze_db`.`timesheet_table` (
+  `id` INT NOT NULL AUTO_INCREMENT,
+  `username` VARCHAR(45) NOT NULL,
+  `event_type` VARCHAR(45) NOT NULL,
+  `date` DATETIME NOT NULL,
+  `comment` VARCHAR(45) NULL,
+  PRIMARY KEY (`id`));
+~~~~
   
 
 
+examples of some commands  
 
 SELECT * FROM worker_account;
-
 
 INSERT INTO worker_account (firstname, lastname, username, password) VALUES ('some','ones','name','pass');
 
