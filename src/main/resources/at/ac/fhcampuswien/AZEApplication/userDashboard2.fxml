@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.ChoiceBox?>
+<?import javafx.scene.control.DatePicker?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
+<?import javafx.scene.text.Text?>
+
+<AnchorPane fx:id="eventChoiceBox" prefHeight="588.0" prefWidth="800.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="at.ac.fhcampuswien.AZEApplication.userDashboard2Controller">
+   <children>
+      <AnchorPane prefHeight="588.0" prefWidth="218.0" style="-fx-background-color: #A4B9BB;">
+         <children>
+            <Button layoutX="27.0" layoutY="401.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="165.0" style="-fx-background-color: #417274;" text="Ausführlische Erfassung" textFill="WHITE" />
+            <Button fx:id="fastCoverageButton" layoutX="27.0" layoutY="339.0" mnemonicParsing="false" onAction="#fastCoverageButtonOnClick" prefHeight="25.0" prefWidth="165.0" style="-fx-background-color: #2345;" text="Schnellerfassung" textFill="WHITE" />
+            <Button layoutX="27.0" layoutY="461.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="165.0" style="-fx-background-color: #2345;" text="Zeitereignisliste" textFill="WHITE" />
+            <Button fx:id="logoutButton" layoutX="25.0" layoutY="525.0" mnemonicParsing="false" onAction="#closeButtonOnClick" prefHeight="25.0" prefWidth="165.0" style="-fx-background-color: #2345;" text="Log out" textFill="WHITE" />
+            <ImageView fx:id="timesheetArt" fitHeight="169.0" fitWidth="146.0" layoutX="36.0" layoutY="23.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../../../../../../../Images/timesheetArt.png" />
+               </image>
+            </ImageView>
+         </children>
+      </AnchorPane>
+      <Text fx:id="usernameMessageLabel" layoutX="283.0" layoutY="79.0" stroke="WHITE" strokeType="OUTSIDE" strokeWidth="0.0">
+         <font>
+            <Font size="14.0" />
+         </font>
+      </Text>
+      <Label fx:id="timeLabel" layoutX="407.0" layoutY="340.0">
+         <font>
+            <Font name="System Italic" size="15.0" />
+         </font>
+      </Label>
+      <Label layoutX="402.0" layoutY="58.0" text="Ausführlische Erfassung:">
+         <font>
+            <Font size="20.0" />
+         </font>
+      </Label>
+      <Label fx:id="queryStatusLabel" layoutX="420.0" layoutY="495.0" textFill="#336b43" />
+      <Label layoutX="398.0" layoutY="162.0" text="Event type">
+         <font>
+            <Font name="System Bold" size="14.0" />
+         </font>
+      </Label>
+      <ChoiceBox fx:id="eventChoiceBox2" layoutX="397.0" layoutY="191.0" prefHeight="25.0" prefWidth="200.0" style="-fx-background-color: #2343;" />
+      <Label layoutX="396.0" layoutY="235.0" text="Date">
+         <font>
+            <Font name="System Bold" size="14.0" />
+         </font>
+      </Label>
+      <DatePicker fx:id="datePicker" layoutX="396.0" layoutY="263.0" onAction="#getDate" prefHeight="25.0" prefWidth="200.0" />
+      <Label layoutX="396.0" layoutY="304.0" text="Time">
+         <font>
+            <Font name="System Bold" size="14.0" />
+         </font>
+      </Label>
+      <TextField fx:id="timeTextField" layoutX="395.0" layoutY="335.0" prefHeight="25.0" prefWidth="206.0" promptText="HH:mm:ss " />
+      <Label layoutX="396.0" layoutY="373.0" text="Comment">
+         <font>
+            <Font name="System Bold" size="14.0" />
+         </font>
+      </Label>
+      <TextField layoutX="395.0" layoutY="401.0" prefHeight="83.0" prefWidth="206.0" promptText="Any comments? - Not mandatory :)" />
+      <Button fx:id="saveDetailedCoverage" layoutX="463.0" layoutY="523.0" mnemonicParsing="false" onAction="#saveDetailedCoverageButtonOnClick" prefHeight="25.0" prefWidth="57.0" style="-fx-background-color: #417274;" text="Save" textFill="WHITE" />
+      <Label fx:id="warningLabel" layoutX="380.0" layoutY="496.0" textAlignment="CENTER" textFill="#cd3939" />
+   </children>
+</AnchorPane>

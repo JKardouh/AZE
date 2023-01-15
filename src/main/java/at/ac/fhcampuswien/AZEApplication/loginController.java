@@ -49,13 +49,13 @@ public class loginController implements Initializable {
         stage.close();
     }
 
-    public void loginButtonOnClick(ActionEvent event) throws SQLException {
+    public void loginButtonOnClick(ActionEvent event) throws SQLException, IOException {
         if(!usernameTextField.getText().isBlank() && !passwordTextField.getText().isBlank()) ValidateLogin();
         else loginMessageLabel.setText("please enter your credentials!");
     }
 
     @FXML
-    protected void ValidateLogin() throws SQLException {
+    protected void ValidateLogin() throws SQLException, IOException {
         databaseConnector connector = new databaseConnector();
         Connection connectDB = connector.getConnection();
         String verifyLogin = "SELECT count(1) FROM worker_account WHERE username = '"+ usernameTextField.getText() +"' and password = '"+ passwordTextField.getText() +"'";
@@ -65,10 +65,18 @@ public class loginController implements Initializable {
 
         while (queryResult.next()){
             if(queryResult.getInt(1)== 1){
-                loginMessageLabel.setText("YOU SHALL ENTER");
+                //Set the current username!
+                user user = new user(usernameTextField.getText());
+                CreateUserDashboard();
             }
             else loginMessageLabel.setText("Incorrect username or password, please try again");
         }
+    }
+
+    private void CreateUserDashboard() throws IOException {
+        Parent root = FXMLLoader.load(getClass().getResource("userDashboard.fxml"));
+        Stage userDashboardStage = (Stage) cancelButton.getScene().getWindow();
+        userDashboardStage.setScene(new Scene(root, 800, 588));
     }
 
     public void registerButtonOnClick(ActionEvent event) throws IOException {

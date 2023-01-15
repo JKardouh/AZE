@@ -85,3 +85,4 @@ public class registerController implements Initializable {
         connect.close();
     }
 }
+
