@@ -5,7 +5,7 @@ TODO
 AZE - Arbeitszeiterfassung
 
 ## brief description of our project
-AZE (Arbeitszeiterfassung) is a timemanagment and tracking tool for the Employsees of an office, assisting the Employees in tracking and managing their workhours, tasks, exceptions like vacation time or sick leave, etc.
+AZE (Arbeitszeiterfassung) is a timemanagment and tracking tool for the Employees of an office, assisting the Employees in tracking and managing their workhours, tasks, exceptions like vacation time or sick leave, etc.
 
 ## group members
 * Judy Kardouh
@@ -14,13 +14,13 @@ AZE (Arbeitszeiterfassung) is a timemanagment and tracking tool for the Employse
 
 ## The functionalities include:
 * (x) registering Employees as Users & assigning UIDs
-* (x) login of exiting Users
+* (x) login of existing Users
 * (x) query unique employee ID
 * (x) defining start and end of worktime
 * (x) defining start and end of breaks
 * ( ) calculating work time including breaktime
-* ( ) calculationg total work time exluding the breaktime
-* (x) the option to choose the workmode from a list ("office", "homeoffice", "vacation", "Sick Leave", "religious days", "time compensation")
+* ( ) calculating total work time exluding the breaktime
+* (x) the option to choose the workmode from a list ("office", "homeoffice", "vacation", "sick Leave", "religious days", "time compensation")
 * ( ) viewing the collected data and calculated worktime in a seperate stage
 * ( ) entering and saving notes and defining work tasks
 
@@ -38,7 +38,7 @@ stage linked to login, registering a new user to the database with UID, firstnam
 ## timesheet:
 ![image](https://user-images.githubusercontent.com/121894511/211634500-1fe99882-a074-4d51-b2ab-c913ff28e222.png)
 
-linked stage for user to collect working relevant data like start and end of worktime, start and end of breaks, workmode, to be retrived mySQL and displayed in an upcoming additional stage
+linked stage for user to collect working relevant data like start and end of worktime, start and end of breaks, workmode, to be retrieved mySQL and displayed in an upcoming additional stage
 
 
 ## mySQL workbench
