@@ -7,7 +7,7 @@ AZE - Arbeitszeiterfassung
 ## brief description of our project
 AZE (Arbeitszeiterfassung) is a timemanagment and tracking tool for the Employsees of an office, assisting the Employees in tracking and managing their workhours, tasks, exceptions like vacation time or sick leave, etc.
 
-## group memebers
+## group members
 * Judy Kardouh
 * Alexander Kroneiser
 * Fatima Jawad
