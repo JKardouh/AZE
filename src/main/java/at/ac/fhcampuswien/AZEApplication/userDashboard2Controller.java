@@ -54,7 +54,7 @@ public class userDashboard2Controller implements Initializable{
 
     @FXML
     protected void timesheetButtonOnClick(ActionEvent event) throws IOException {
-        user.changeName(""); //for it to 'log out and forget the username'
+        //user.changeName(""); //for it to 'log out and forget the username'
 
         Parent root = FXMLLoader.load(Objects.requireNonNull(getClass().getResource("userTimesheet.fxml")));
         Stage registerStage = (Stage) logoutButton.getScene().getWindow();

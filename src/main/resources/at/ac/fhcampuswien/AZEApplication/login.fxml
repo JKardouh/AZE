@@ -19,7 +19,7 @@
                   <Image url="@../../../../../../../Images/loginart.jpg" />
                </image>
             </ImageView>
-            <Button fx:id="registerEmployeeButton" layoutX="28.0" layoutY="529.0" mnemonicParsing="false" onAction="#registerButtonOnClick" prefHeight="25.0" prefWidth="188.0" style="-fx-background-color: #5534;" text="register employee as Admin" textFill="WHITE" />
+            <Button fx:id="registerEmployeeButton" layoutX="28.0" layoutY="529.0" mnemonicParsing="false" onAction="#registerButtonOnClick" prefHeight="25.0" prefWidth="188.0" style="-fx-background-color: #5534;" text="register employee" textFill="WHITE" />
          </children>
       </AnchorPane>
    </left>

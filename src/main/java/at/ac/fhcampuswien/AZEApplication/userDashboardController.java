@@ -55,7 +55,7 @@ public class userDashboardController implements Initializable{
 
     @FXML
     protected void timesheetButtonOnClick(ActionEvent event) throws IOException {
-        user.changeName(""); //for it to 'log out and forget the username'
+        //user.changeName(""); //for it to 'log out and forget the username'
 
         Parent root = FXMLLoader.load(Objects.requireNonNull(getClass().getResource("userTimesheet.fxml")));
         Stage registerStage = (Stage) logoutButton.getScene().getWindow();
@@ -112,7 +112,7 @@ public class userDashboardController implements Initializable{
     }
 
     private void initClock() {
-        // reference https://stackoverflow.com/questions/42383857/javafx-live-time-and-date :D
+        // reference https://stackoverflow.com/questions/42383857/javafx-live-time-and-date last visit 22.01.2023
         Timeline clock = new Timeline(new KeyFrame(Duration.ZERO, e -> {
             DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss");
             timeLabel.setText(LocalDateTime.now().format(formatter));

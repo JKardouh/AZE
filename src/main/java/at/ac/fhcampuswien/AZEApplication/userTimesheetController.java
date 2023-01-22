@@ -1,8 +1,7 @@
 package at.ac.fhcampuswien.AZEApplication;
 
-import javafx.animation.Animation;
-import javafx.animation.KeyFrame;
-import javafx.animation.Timeline;
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -10,39 +9,67 @@ import javafx.fxml.Initializable;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
-import javafx.scene.control.ChoiceBox;
-import javafx.scene.control.DatePicker;
-import javafx.scene.control.Label;
+import javafx.scene.control.TableColumn;
+import javafx.scene.control.TableView;
+import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.stage.Stage;
-import javafx.util.Duration;
 
 import java.io.File;
 import java.io.IOException;
 import java.net.URL;
-import java.sql.Connection;
-import java.sql.SQLException;
-import java.sql.Statement;
-import java.time.LocalDateTime;
-import java.time.ZoneId;
-import java.time.ZonedDateTime;
-import java.time.format.DateTimeFormatter;
+import java.sql.*;
 import java.util.Objects;
 import java.util.ResourceBundle;
-
-import static javafx.util.Duration.seconds;
 
 public class userTimesheetController implements Initializable{
     @FXML private ImageView timesheetArt;
     @FXML private Button logoutButton;
     @FXML private Button detailedCoverageButton;
+    @FXML private Button exportButton;
+    @FXML private TableView<userData> timesheetTable;
+    @FXML private TableColumn <userData,String> col_username;
+    @FXML private TableColumn <userData,String> col_event_type;
+    @FXML private TableColumn <userData,String> col_date;
+    @FXML private TableColumn <userData,String> col_comment;
+    ObservableList<userData> list;
+    int index = -1;
+
 
     @FXML
     protected void fastCoverageButtonOnClick(ActionEvent event) throws IOException {
         Parent root = FXMLLoader.load(Objects.requireNonNull(getClass().getResource("userDashboard.fxml")));
         Stage registerStage = (Stage) logoutButton.getScene().getWindow();
         registerStage.setScene(new Scene(root, 800, 588));
+    }
+
+    @FXML
+    protected void exportButtonOnClick(ActionEvent event) throws SQLException {
+        DisplayData();
+    }
+
+    public static ObservableList<userData> getUserData(){
+        ObservableList<userData> list = FXCollections.observableArrayList();
+
+        try {
+            databaseConnector connector = new databaseConnector();
+            Connection connect = connector.getConnection();
+            String username = user.getUsername();
+            PreparedStatement ps = connector.databaseLink.prepareStatement("SELECT * FROM timesheet_table WHERE username = '"+username+ "';");
+
+            ResultSet resultSet = ps.executeQuery();
+            while (resultSet.next()){
+                list.add(new userData(resultSet.getString("username"),
+                        resultSet.getString("event_type"),
+                        resultSet.getString("date"),
+                        resultSet.getString("comment")));
+            }
+
+
+        }catch (SQLException ignored) {
+        }
+        return  list;
     }
 
     @FXML
@@ -69,6 +96,18 @@ public class userTimesheetController implements Initializable{
         Image registerImage = new Image(registerImageFile.toURI().toString());
         timesheetArt.setImage(registerImage);
 
+        DisplayData();
+
+    }
+
+    private void DisplayData() {
+        col_username.setCellValueFactory(new PropertyValueFactory<userData, String>("username"));
+        col_event_type.setCellValueFactory(new PropertyValueFactory<userData, String>("event_type"));
+        col_date.setCellValueFactory(new PropertyValueFactory<userData, String>("date"));
+        col_comment.setCellValueFactory(new PropertyValueFactory<userData, String>("comment"));
+
+        list = getUserData();
+        timesheetTable.setItems(list);
     }
 
 }
