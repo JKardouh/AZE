@@ -39,21 +39,25 @@ public class loginController implements Initializable {
         Image logoImage = new Image(logoImageFile.toURI().toString());
         logoImageView.setImage(logoImage);
 
+
         File loginArtImageFile = new File("Images/loginart.jpg");
         Image loginArtImage = new Image(loginArtImageFile.toURI().toString());
         loginArtImageView.setImage(loginArtImage);
     }
+    //is called when fxml file is loaded. loads the images
 
     @FXML
     protected void cancelButtonOnClick(ActionEvent event) {
         Stage stage = (Stage) cancelButton.getScene().getWindow();
         stage.close();
     }
+    //when clicking the cancel button, this should close the window
 
     public void loginButtonOnClick(ActionEvent event) throws SQLException, IOException {
         if(!usernameTextField.getText().isBlank() && !passwordTextField.getText().isBlank()) ValidateLogin();
         else loginMessageLabel.setText("please enter your credentials!");
     }
+    //is called when clicking login button
 
     @FXML
     protected void ValidateLogin() throws SQLException, IOException {
@@ -73,12 +77,14 @@ public class loginController implements Initializable {
             else loginMessageLabel.setText("Incorrect username or password, please try again");
         }
     }
+    //is called when the login button is clicked, checks if credentials entered match any in the database
 
     private void CreateUserDashboard() throws IOException {
         Parent root = FXMLLoader.load(Objects.requireNonNull(getClass().getResource("userDashboard.fxml")));
         Stage userDashboardStage = (Stage) cancelButton.getScene().getWindow();
         userDashboardStage.setScene(new Scene(root, 800, 588));
     }
+    //if login is successful, this will load the user dashboard scene
 
     public void registerButtonOnClick(ActionEvent event) throws IOException {
         //createAccountForm
@@ -86,4 +92,5 @@ public class loginController implements Initializable {
         Stage registerStage = (Stage) cancelButton.getScene().getWindow();
         registerStage.setScene(new Scene(root, 800, 588));
     }
+    //is called when the register button is clicked
 }
