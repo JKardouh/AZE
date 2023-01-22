@@ -18,6 +18,9 @@ import java.sql.Connection;
 import java.sql.SQLException;
 import java.sql.Statement;
 import java.time.LocalDate;
+import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
+import java.time.format.DateTimeParseException;
 import java.util.Objects;
 import java.util.ResourceBundle;
 
@@ -76,18 +79,30 @@ public class userDashboard2Controller implements Initializable{
     }
 
     private void validateQuery(String formattedDateTime, String insertQuery) throws SQLException {
-        if (isValidDate(formattedDateTime)){
+        if (isValidDate(formattedDateTime) && isNotInFuture(formattedDateTime)){
             databaseConnector connector = new databaseConnector();
             Connection connect = connector.getConnection();
             Statement statement = connect.createStatement();
             statement.executeUpdate(insertQuery);
             connect.close();
-            queryStatusLabel.setText("event successfully saved!");
             warningLabel.setText("");
+            queryStatusLabel.setText("event successfully saved!");
         }else{
             queryStatusLabel.setText("");
-            warningLabel.setText("Something went Wrong, Please check your inputs");
+            warningLabel.setText("");
+            if(!isValidDate(formattedDateTime)) warningLabel.setText("Something went Wrong, Please check your inputs");
+            else warningLabel.setText("Time cannot be in the future!");
         }
+    }
+
+    private boolean isNotInFuture(String formattedDateTime) {
+        boolean result = false;
+        try {
+            DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss");
+            LocalDateTime dateTime = LocalDateTime.parse(formattedDateTime, formatter);
+            result = dateTime.isBefore(LocalDateTime.now());
+        }catch (DateTimeParseException ignored){}
+        return result;
     }
 
     public static boolean isValidDate(String date) {

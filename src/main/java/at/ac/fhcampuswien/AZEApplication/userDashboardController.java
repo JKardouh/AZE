@@ -42,6 +42,7 @@ public class userDashboardController implements Initializable{
     @FXML private ChoiceBox<String> eventChoiceBox;
     @FXML private DatePicker datePicker;
     private String[] eventType = {"come", "Go", "Home-office start","Home-office end"};
+
     @FXML
     protected void closeButtonOnClick(ActionEvent event) throws IOException {
         user.changeName(""); //for it to 'log out and forget the username'
