@@ -17,7 +17,7 @@
          <children>
             <Button layoutX="27.0" layoutY="401.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="165.0" style="-fx-background-color: #417274;" text="Ausführlische Erfassung" textFill="WHITE" />
             <Button fx:id="fastCoverageButton" layoutX="27.0" layoutY="339.0" mnemonicParsing="false" onAction="#fastCoverageButtonOnClick" prefHeight="25.0" prefWidth="165.0" style="-fx-background-color: #2345;" text="Schnellerfassung" textFill="WHITE" />
-            <Button layoutX="27.0" layoutY="461.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="165.0" style="-fx-background-color: #2345;" text="Zeitereignisliste" textFill="WHITE" />
+            <Button fx:id="timesheetButton" layoutX="27.0" layoutY="461.0" mnemonicParsing="false" onAction="#timesheetButtonOnClick" prefHeight="25.0" prefWidth="165.0" style="-fx-background-color: #2345;" text="Zeitereignisliste" textFill="WHITE" />
             <Button fx:id="logoutButton" layoutX="25.0" layoutY="525.0" mnemonicParsing="false" onAction="#closeButtonOnClick" prefHeight="25.0" prefWidth="165.0" style="-fx-background-color: #2345;" text="Log out" textFill="WHITE" />
             <ImageView fx:id="timesheetArt" fitHeight="169.0" fitWidth="146.0" layoutX="36.0" layoutY="23.0" pickOnBounds="true" preserveRatio="true">
                <image>

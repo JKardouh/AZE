@@ -1,7 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <?import javafx.scene.control.Button?>
-<?import javafx.scene.control.ChoiceBox?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
@@ -9,13 +8,13 @@
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
-<AnchorPane prefHeight="588.0" prefWidth="800.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="at.ac.fhcampuswien.AZEApplication.userDashboardController">
+<AnchorPane fx:id="eventChoiceBox" prefHeight="588.0" prefWidth="800.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="at.ac.fhcampuswien.AZEApplication.userTimesheetController">
    <children>
       <AnchorPane prefHeight="588.0" prefWidth="218.0" style="-fx-background-color: #A4B9BB;">
          <children>
             <Button fx:id="detailedCoverageButton" layoutX="27.0" layoutY="401.0" mnemonicParsing="false" onAction="#detailedCoverageButtonOnClick" prefHeight="25.0" prefWidth="165.0" style="-fx-background-color: #2345;" text="Ausführlische Erfassung" textFill="WHITE" />
-            <Button layoutX="27.0" layoutY="339.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="165.0" style="-fx-background-color: #417274;" text="Schnellerfassung" textFill="WHITE" />
-            <Button fx:id="timesheetButton" layoutX="27.0" layoutY="461.0" mnemonicParsing="false" onAction="#timesheetButtonOnClick" prefHeight="25.0" prefWidth="165.0" style="-fx-background-color: #2345;" text="Zeitereignisliste" textFill="WHITE" />
+            <Button fx:id="fastCoverageButton" layoutX="27.0" layoutY="339.0" mnemonicParsing="false" onAction="#fastCoverageButtonOnClick" prefHeight="25.0" prefWidth="165.0" style="-fx-background-color: #2345;" text="Schnellerfassung" textFill="WHITE" />
+            <Button layoutX="27.0" layoutY="461.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="165.0" style="-fx-background-color: #417274;" text="Zeitereignisliste" textFill="WHITE" />
             <Button fx:id="logoutButton" layoutX="25.0" layoutY="525.0" mnemonicParsing="false" onAction="#closeButtonOnClick" prefHeight="25.0" prefWidth="165.0" style="-fx-background-color: #2345;" text="Log out" textFill="WHITE" />
             <ImageView fx:id="timesheetArt" fitHeight="169.0" fitWidth="146.0" layoutX="36.0" layoutY="23.0" pickOnBounds="true" preserveRatio="true">
                <image>
@@ -29,28 +28,12 @@
             <Font size="14.0" />
          </font>
       </Text>
-      <Label layoutX="400.0" layoutY="311.0" text="Actual Timestamp">
-         <font>
-            <Font name="System Bold" size="14.0" />
-         </font>
-      </Label>
       <Label fx:id="timeLabel" layoutX="407.0" layoutY="340.0">
          <font>
             <Font name="System Italic" size="15.0" />
          </font>
       </Label>
-      <Label layoutX="370.0" layoutY="58.0" text="Schnellerfassung: The fast way!">
-         <font>
-            <Font size="20.0" />
-         </font>
-      </Label>
-      <ChoiceBox fx:id="eventChoiceBox" layoutX="400.0" layoutY="256.0" prefHeight="25.0" prefWidth="199.0" style="-fx-background-color: #2343;" />
-      <Button fx:id="saveButton" layoutX="400.0" layoutY="394.0" mnemonicParsing="false" onAction="#saveButtonOnClick" prefHeight="25.0" prefWidth="199.0" style="-fx-background-color: #2345;" text="SAVE" textFill="WHITE" />
-      <Label fx:id="queryStatusLabel" layoutX="420.0" layoutY="451.0" textFill="#336b43" />
-      <Label layoutX="400.0" layoutY="216.0" text="Event type">
-         <font>
-            <Font name="System Bold" size="14.0" />
-         </font>
-      </Label>
+      <Label fx:id="queryStatusLabel" layoutX="420.0" layoutY="495.0" textFill="#336b43" />
+      <Label fx:id="warningLabel" layoutX="380.0" layoutY="496.0" textAlignment="CENTER" textFill="#cd3939" />
    </children>
 </AnchorPane>

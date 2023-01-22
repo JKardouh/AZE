@@ -37,6 +37,7 @@ public class userDashboardController implements Initializable{
     @FXML private ImageView timesheetArt;
     @FXML private Button logoutButton;
     @FXML private Button detailedCoverageButton;
+    @FXML private Button timesheetButton;
     @FXML private Label timeLabel;
     @FXML private Label queryStatusLabel;
     @FXML private ChoiceBox<String> eventChoiceBox;
@@ -48,6 +49,15 @@ public class userDashboardController implements Initializable{
         user.changeName(""); //for it to 'log out and forget the username'
 
         Parent root = FXMLLoader.load(Objects.requireNonNull(getClass().getResource("login.fxml")));
+        Stage registerStage = (Stage) logoutButton.getScene().getWindow();
+        registerStage.setScene(new Scene(root, 800, 588));
+    }
+
+    @FXML
+    protected void timesheetButtonOnClick(ActionEvent event) throws IOException {
+        user.changeName(""); //for it to 'log out and forget the username'
+
+        Parent root = FXMLLoader.load(Objects.requireNonNull(getClass().getResource("userTimesheet.fxml")));
         Stage registerStage = (Stage) logoutButton.getScene().getWindow();
         registerStage.setScene(new Scene(root, 800, 588));
     }
