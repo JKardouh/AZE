@@ -10,7 +10,7 @@ AZE (Arbeitszeiterfassung) is a timemanagment and tracking tool for the Employee
 ## group members
 * Judy Kardouh
 * Alexander Kroneiser
-* Fatima Jawad
+* Fatma Jawad
 
 ## The functionalities include:
 * (x) registering Employees as Users & assigning UIDs
