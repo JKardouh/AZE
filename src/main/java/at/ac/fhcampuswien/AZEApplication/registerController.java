@@ -77,7 +77,7 @@ public class registerController implements Initializable {
     /**
      * checks if user exists already from database.
      * @return a boolean if a user exists or not.
-     * @throws SQLException
+     * @throws SQLException Throws exception in case anything wrong happens.
      */
     private boolean checkIfUsernameExistsAlready() throws SQLException {
         databaseConnector connector = new databaseConnector();

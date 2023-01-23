@@ -3,6 +3,9 @@ package at.ac.fhcampuswien.AZEApplication;
 import java.sql.Connection;
 import java.sql.DriverManager;
 
+/**
+ * Database connector class which is responsible for establishing connection to database
+ */
 public class databaseConnector {
     public Connection databaseLink;
 

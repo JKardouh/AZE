@@ -8,6 +8,9 @@ import javafx.stage.Stage;
 import java.io.IOException;
 
 
+/**
+ * AZE application class where application starts, this has the Main scene which is the log in scene.
+ */
 public class AZEApplication extends Application {
 
     /**

@@ -48,10 +48,9 @@ public class userTimesheetController implements Initializable{
 
     /**
      * Works like a refresh button to get data for the timesheet table.
-     * @throws SQLException which is thrown if something happens.
      */
     @FXML
-    protected void exportButtonOnClick(ActionEvent event) throws SQLException {
+    protected void exportButtonOnClick(ActionEvent event){
         DisplayData();
     }
 
@@ -64,7 +63,7 @@ public class userTimesheetController implements Initializable{
 
         try {
             databaseConnector connector = new databaseConnector();
-            Connection connect = connector.getConnection();
+            connector.getConnection();
             String username = user.getUsername();
             PreparedStatement ps = connector.databaseLink.prepareStatement("SELECT * FROM timesheet_table WHERE username = '"+username+ "';");
 
@@ -128,10 +127,10 @@ public class userTimesheetController implements Initializable{
      * Displays the data of specific user.
      */
     private void DisplayData() {
-        col_username.setCellValueFactory(new PropertyValueFactory<userData, String>("username"));
-        col_event_type.setCellValueFactory(new PropertyValueFactory<userData, String>("event_type"));
-        col_date.setCellValueFactory(new PropertyValueFactory<userData, String>("date"));
-        col_comment.setCellValueFactory(new PropertyValueFactory<userData, String>("comment"));
+        col_username.setCellValueFactory(new PropertyValueFactory<>("username"));
+        col_event_type.setCellValueFactory(new PropertyValueFactory<>("event_type"));
+        col_date.setCellValueFactory(new PropertyValueFactory<>("date"));
+        col_comment.setCellValueFactory(new PropertyValueFactory<>("comment"));
 
         list = getUserData();
         timesheetTable.setItems(list);

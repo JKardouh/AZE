@@ -21,7 +21,7 @@ public class user {
 
     /**
      * Allows to set the users name.
-     * @param newName
+     * @param newName to change the username with this value.
      */
     public static void changeName(String newName) {
         username = newName;

@@ -133,7 +133,7 @@ public class userDashboard2Controller implements Initializable{
 
     /**
      * Checks if the date is in the future.
-     * @param formattedDateTime
+     * @param formattedDateTime the formatted datetime string.
      * @return boolean; if the date is in the future.
      */
     private boolean isNotInFuture(String formattedDateTime) {

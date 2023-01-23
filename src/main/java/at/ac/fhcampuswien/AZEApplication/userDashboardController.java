@@ -42,7 +42,7 @@ public class userDashboardController implements Initializable{
     @FXML private Label queryStatusLabel;
     @FXML private ChoiceBox<String> eventChoiceBox;
     @FXML private DatePicker datePicker;
-    private String[] eventType = {"come", "Go", "Home-office start","Home-office end"};
+    private final String[] eventType = {"come", "Go", "Home-office start","Home-office end"};
 
     /**
      * Closes current page (logs user out) and goes to log in page.
