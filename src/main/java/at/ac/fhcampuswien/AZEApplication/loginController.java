@@ -54,13 +54,13 @@ public class loginController implements Initializable {
     //when clicking the cancel button, this should close the window
 
     public void loginButtonOnClick(ActionEvent event) throws SQLException, IOException {
-        if(!usernameTextField.getText().isBlank() && !passwordTextField.getText().isBlank()) ValidateLogin();
+        if(!usernameTextField.getText().isBlank() && !passwordTextField.getText().isBlank()) validateLogin();
         else loginMessageLabel.setText("please enter your credentials!");
     }
     //is called when clicking login button
 
     @FXML
-    protected void ValidateLogin() throws SQLException, IOException {
+    protected void validateLogin() throws SQLException, IOException {
         databaseConnector connector = new databaseConnector();
         Connection connectDB = connector.getConnection();
         String verifyLogin = "SELECT count(1) FROM worker_account WHERE username = '"+ usernameTextField.getText() +"' and password = '"+ passwordTextField.getText() +"'";
@@ -72,14 +72,14 @@ public class loginController implements Initializable {
             if(queryResult.getInt(1)== 1){
                 //Set the current username!
                 user user = new user(usernameTextField.getText());
-                CreateUserDashboard();
+                createUserDashboard();
             }
             else loginMessageLabel.setText("Incorrect username or password, please try again");
         }
     }
     //is called when the login button is clicked, checks if credentials entered match any in the database
 
-    private void CreateUserDashboard() throws IOException {
+    private void createUserDashboard() throws IOException {
         Parent root = FXMLLoader.load(Objects.requireNonNull(getClass().getResource("userDashboard.fxml")));
         Stage userDashboardStage = (Stage) cancelButton.getScene().getWindow();
         userDashboardStage.setScene(new Scene(root, 800, 588));

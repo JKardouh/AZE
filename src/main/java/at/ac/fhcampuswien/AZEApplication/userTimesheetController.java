@@ -46,7 +46,7 @@ public class userTimesheetController implements Initializable{
 
     @FXML
     protected void exportButtonOnClick(ActionEvent event) throws SQLException {
-        DisplayData();
+        displayData();
     }
 
     public static ObservableList<userData> getUserData(){
@@ -96,11 +96,11 @@ public class userTimesheetController implements Initializable{
         Image registerImage = new Image(registerImageFile.toURI().toString());
         timesheetArt.setImage(registerImage);
 
-        DisplayData();
+        displayData();
 
     }
 
-    private void DisplayData() {
+    private void displayData() {
         col_username.setCellValueFactory(new PropertyValueFactory<userData, String>("username"));
         col_event_type.setCellValueFactory(new PropertyValueFactory<userData, String>("event_type"));
         col_date.setCellValueFactory(new PropertyValueFactory<userData, String>("date"));
