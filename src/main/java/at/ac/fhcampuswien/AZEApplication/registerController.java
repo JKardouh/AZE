@@ -33,6 +33,10 @@ public class registerController implements Initializable {
     @FXML private PasswordField passwordTextField;
     @FXML private PasswordField confirmPasswordTextField;
 
+    /**
+     *initializable is part of the JavaFX interface.
+     *initialize is called when the GUI is being loaded.
+     */
     @Override
     public void initialize(URL location, ResourceBundle resources) {
         File registerImageFile = new File("Images/registerArt.png");
@@ -40,6 +44,9 @@ public class registerController implements Initializable {
         registerImageView.setImage(registerImage);
     }
 
+    /**
+     * If user clicks the "close" button then she/he gets redirected to the login page.
+     */
     @FXML
     protected void closeButtonOnClick(ActionEvent event) throws IOException {
         Parent root = FXMLLoader.load(Objects.requireNonNull(getClass().getResource("login.fxml")));
@@ -47,6 +54,11 @@ public class registerController implements Initializable {
         registerStage.setScene(new Scene(root, 800, 588));
     }
 
+    /**
+     * If user clicks the "register" button then this method is called.
+     * Checks if both passwordfields match, then if all fields are filled.
+     * It also checks if the username has been taken.
+     */
     public void registerButtonOnClick(ActionEvent event) throws SQLException {
         if(passwordTextField.getText().equals(confirmPasswordTextField.getText()) && !firstnameTextField.getText().isBlank() && !lastnameTextField.getText().isBlank() && !usernameTextField.getText().isBlank() && !passwordTextField.getText().isBlank()){
             if(!checkIfUsernameExistsAlready()){ //this was causing java.lang.reflect.InvocationTargetException
@@ -56,6 +68,11 @@ public class registerController implements Initializable {
         }else confirmPasswordLabel.setText("Unable to complete action, please check all entries.");
     }
 
+    /**
+     * Checks if the username already exists with the help of databaseConnector.
+     * Returns a value of true/false based on if the user already exists or not.
+     * This method is used in the registerButtonOnClick method.
+     */
     private boolean checkIfUsernameExistsAlready() throws SQLException {
         databaseConnector connector = new databaseConnector();
         Connection connect = connector.getConnection();
@@ -68,6 +85,10 @@ public class registerController implements Initializable {
         return false;
     }
 
+    /**
+     * If the checks are successful then this method will make a new user.
+     * This is again possible because of the databaseConnector class.
+     */
     public void registerEmployee() throws SQLException {
         confirmPasswordLabel.setText("");
 
