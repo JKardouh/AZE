@@ -21,6 +21,9 @@ import java.sql.*;
 import java.util.Objects;
 import java.util.ResourceBundle;
 
+/**
+ * class/ controller for the employee registration form.
+ */
 public class registerController implements Initializable {
 
     @FXML private Button closeButton;

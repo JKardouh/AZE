@@ -24,6 +24,9 @@ import java.time.format.DateTimeParseException;
 import java.util.Objects;
 import java.util.ResourceBundle;
 
+/**
+ * class/ controller for the detailed coverage view (second menu item on the left)
+ */
 public class userDashboard2Controller implements Initializable{
     @FXML private ImageView timesheetArt;
     @FXML private Button logoutButton;

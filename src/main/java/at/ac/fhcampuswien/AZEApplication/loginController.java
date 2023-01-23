@@ -24,6 +24,9 @@ import java.sql.Statement;
 import java.util.Objects;
 import java.util.ResourceBundle;
 
+/**
+ * class/ controller for the main log in page.
+ */
 public class loginController implements Initializable {
     @FXML private ImageView logoImageView;
     @FXML private ImageView loginArtImageView;

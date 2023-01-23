@@ -33,6 +33,9 @@ import java.util.ResourceBundle;
 
 import static javafx.util.Duration.seconds;
 
+/**
+ * class/ controller for the fast coverage view (first menu item on the left)
+ */
 public class userDashboardController implements Initializable{
     @FXML private ImageView timesheetArt;
     @FXML private Button logoutButton;
@@ -88,22 +91,26 @@ public class userDashboardController implements Initializable{
         databaseConnector connector = new databaseConnector();
         Connection connect = connector.getConnection();
 
+        // How it knows which user it has to use for query.
         String username = user.getUsername();
 
+        // event choice (come? go? etc...)
         String eventChoice =  eventChoiceBox.getValue();
         if(eventChoice == null) eventChoice = "come";
+
         //Current time
         ZonedDateTime dateTime = ZonedDateTime.now(ZoneId.of("Europe/Berlin"));
         DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss");
         String formattedDateTime = dateTime.format(formatter);
 
-
+        // put all info in query.
         String insertQuery = "INSERT INTO timesheet_table (username, event_type, date, comment) VALUES ('"+ username+ "','"+ eventChoice +"','"+ formattedDateTime +"', '');";
 
         Statement statement = connect.createStatement();
         statement.executeUpdate(insertQuery);
-        connect.close();
 
+        // clean up connection.
+        connect.close();
         queryStatusLabel.setText("event successfully saved!");
     }
 

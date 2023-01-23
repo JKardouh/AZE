@@ -23,6 +23,9 @@ import java.sql.*;
 import java.util.Objects;
 import java.util.ResourceBundle;
 
+/**
+ * User time sheet class/controller where the employee data is displayed
+ */
 public class userTimesheetController implements Initializable{
     @FXML private ImageView timesheetArt;
     @FXML private Button logoutButton;
@@ -33,7 +36,7 @@ public class userTimesheetController implements Initializable{
     @FXML private TableColumn <userData,String> col_event_type;
     @FXML private TableColumn <userData,String> col_date;
     @FXML private TableColumn <userData,String> col_comment;
-    ObservableList<userData> list;
+    ObservableList<userData> userDataObservableList;
 
     /**
      * Goes to fast coverage page.
@@ -59,24 +62,24 @@ public class userTimesheetController implements Initializable{
      * @return the list of observable items.
      */
     public static ObservableList<userData> getUserData(){
-        ObservableList<userData> list = FXCollections.observableArrayList();
+        ObservableList<userData> userDataObservableList = FXCollections.observableArrayList();
 
         try {
             databaseConnector connector = new databaseConnector();
             connector.getConnection();
             String username = user.getUsername();
             PreparedStatement ps = connector.databaseLink.prepareStatement("SELECT * FROM timesheet_table WHERE username = '"+username+ "';");
-
             ResultSet resultSet = ps.executeQuery();
+
             while (resultSet.next()){
-                list.add(new userData(resultSet.getString("username"),
+                userDataObservableList.add(new userData(resultSet.getString("username"),
                         resultSet.getString("event_type"),
                         resultSet.getString("date"),
                         resultSet.getString("comment")));
             }
         }catch (SQLException ignored) {
         }
-        return list;
+        return userDataObservableList;
     }
 
     /**
@@ -132,8 +135,8 @@ public class userTimesheetController implements Initializable{
         col_date.setCellValueFactory(new PropertyValueFactory<>("date"));
         col_comment.setCellValueFactory(new PropertyValueFactory<>("comment"));
 
-        list = getUserData();
-        timesheetTable.setItems(list);
+        userDataObservableList = getUserData();
+        timesheetTable.setItems(userDataObservableList);
     }
 
 }

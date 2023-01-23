@@ -1,5 +1,8 @@
 package at.ac.fhcampuswien.AZEApplication;
 
+/**
+ * a class for employee data to be displayed and 'get' for the timetable, time sheet.
+ */
 public class userData {
     String username,event_type, date, comment;
     public userData(String username, String event_type, String date, String comment){
@@ -10,35 +13,34 @@ public class userData {
     }
 
     /**
-     * Getters and setters for the timesheet table user's info.
+     * Gets the username.
+     * @return the username.
      */
-
     public String getUsername(){
         return username;
     }
-    public void setUsername(String username){
-        this.username = username;
-    }
 
+    /**
+     * Gets the event type.
+     * @return the event type.
+     */
     public String getEvent_type(){
         return event_type;
     }
 
-    public void setEvent_type(String event_type){
-        this.event_type = event_type;
-    }
-
+    /**
+     * Gets the date of the event.
+     * @return the date.
+     */
     public String getDate(){
         return date;
     }
-    public void setDate(String date){
-        this.date = date;
-    }
 
+    /**
+     * Gets the comment about event.
+     * @return the comment.
+     */
     public String getComment(){
         return comment;
-    }
-    public void setComment(String comment){
-        this.comment = comment;
     }
 }
