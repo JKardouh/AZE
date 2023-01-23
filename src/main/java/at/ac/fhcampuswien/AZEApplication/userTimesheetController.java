@@ -55,6 +55,10 @@ public class userTimesheetController implements Initializable{
         DisplayData();
     }
 
+    /**
+     * list that allows listeners to track changes when they occur.
+     * @return the list of observable items.
+     */
     public static ObservableList<userData> getUserData(){
         ObservableList<userData> list = FXCollections.observableArrayList();
 
