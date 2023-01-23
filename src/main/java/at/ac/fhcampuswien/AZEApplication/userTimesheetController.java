@@ -34,9 +34,11 @@ public class userTimesheetController implements Initializable{
     @FXML private TableColumn <userData,String> col_date;
     @FXML private TableColumn <userData,String> col_comment;
     ObservableList<userData> list;
-    int index = -1;
 
-
+    /**
+     * Goes to fast coverage page.
+     * @throws IOException which is thrown if something happens.
+     */
     @FXML
     protected void fastCoverageButtonOnClick(ActionEvent event) throws IOException {
         Parent root = FXMLLoader.load(Objects.requireNonNull(getClass().getResource("userDashboard.fxml")));
@@ -44,6 +46,10 @@ public class userTimesheetController implements Initializable{
         registerStage.setScene(new Scene(root, 800, 588));
     }
 
+    /**
+     * Works like a refresh button to get data for the timesheet table.
+     * @throws SQLException which is thrown if something happens.
+     */
     @FXML
     protected void exportButtonOnClick(ActionEvent event) throws SQLException {
         DisplayData();
@@ -65,13 +71,15 @@ public class userTimesheetController implements Initializable{
                         resultSet.getString("date"),
                         resultSet.getString("comment")));
             }
-
-
         }catch (SQLException ignored) {
         }
-        return  list;
+        return list;
     }
 
+    /**
+     * Logs user out, and heads back to log in main page.
+     * @throws IOException which is thrown if something happens.
+     */
     @FXML
     protected void closeButtonOnClick(ActionEvent event) throws IOException {
         user.changeName(""); //for it to 'log out and forget the username'
@@ -81,6 +89,10 @@ public class userTimesheetController implements Initializable{
         registerStage.setScene(new Scene(root, 800, 588));
     }
 
+    /**
+     * Goes to detailed coverage page.
+     * @throws IOException which is thrown if something happens.
+     */
     @FXML
     protected void detailedCoverageButtonOnClick(ActionEvent event) throws IOException {
         Parent root = FXMLLoader.load(Objects.requireNonNull(getClass().getResource("userDashboard2.fxml")));
@@ -88,7 +100,16 @@ public class userTimesheetController implements Initializable{
         registerStage.setScene(new Scene(root, 800, 588));
     }
 
-
+    /**
+     * Initializes the picture used in the scene. and displays data in the database table UI.
+     * @param location
+     * The location used to resolve relative paths for the root object, or
+     * {@code null} if the location is not known.
+     *
+     * @param resources
+     * The resources used to localize the root object, or {@code null} if
+     * the root object was not localized.
+     */
     @Override
     public void initialize(URL location, ResourceBundle resources) {
         //load the picture from images.
@@ -97,9 +118,11 @@ public class userTimesheetController implements Initializable{
         timesheetArt.setImage(registerImage);
 
         DisplayData();
-
     }
 
+    /**
+     * Displays the data of specific user.
+     */
     private void DisplayData() {
         col_username.setCellValueFactory(new PropertyValueFactory<userData, String>("username"));
         col_event_type.setCellValueFactory(new PropertyValueFactory<userData, String>("event_type"));

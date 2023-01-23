@@ -33,6 +33,16 @@ public class registerController implements Initializable {
     @FXML private PasswordField passwordTextField;
     @FXML private PasswordField confirmPasswordTextField;
 
+    /**
+     * Initializes the stage, This is basically what lets the pictures get displayed.
+     * @param location
+     * The location used to resolve relative paths for the root object, or
+     * {@code null} if the location is not known.
+     *
+     * @param resources
+     * The resources used to localize the root object, or {@code null} if
+     * the root object was not localized.
+     */
     @Override
     public void initialize(URL location, ResourceBundle resources) {
         File registerImageFile = new File("Images/registerArt.png");
@@ -40,6 +50,11 @@ public class registerController implements Initializable {
         registerImageView.setImage(registerImage);
     }
 
+    /**
+     * Goes back to log in page (like a go back button).
+     * @param event
+     * @throws IOException
+     */
     @FXML
     protected void closeButtonOnClick(ActionEvent event) throws IOException {
         Parent root = FXMLLoader.load(Objects.requireNonNull(getClass().getResource("login.fxml")));
@@ -47,6 +62,11 @@ public class registerController implements Initializable {
         registerStage.setScene(new Scene(root, 800, 588));
     }
 
+    /**
+     * Handles the register logic with the text fields. and prints status for confirmation.
+     * @param event
+     * @throws SQLException
+     */
     public void registerButtonOnClick(ActionEvent event) throws SQLException {
         if(passwordTextField.getText().equals(confirmPasswordTextField.getText()) && !firstnameTextField.getText().isBlank() && !lastnameTextField.getText().isBlank() && !usernameTextField.getText().isBlank() && !passwordTextField.getText().isBlank()){
             if(!checkIfUsernameExistsAlready()){ //this was causing java.lang.reflect.InvocationTargetException
@@ -56,6 +76,11 @@ public class registerController implements Initializable {
         }else confirmPasswordLabel.setText("Unable to complete action, please check all entries.");
     }
 
+    /**
+     * checks if user exists already from database.
+     * @return a boolean if a user exists or not.
+     * @throws SQLException
+     */
     private boolean checkIfUsernameExistsAlready() throws SQLException {
         databaseConnector connector = new databaseConnector();
         Connection connect = connector.getConnection();
@@ -68,6 +93,10 @@ public class registerController implements Initializable {
         return false;
     }
 
+    /**
+     * Registers the employee text field inputted info through database connection.
+     * @throws SQLException
+     */
     public void registerEmployee() throws SQLException {
         confirmPasswordLabel.setText("");
 

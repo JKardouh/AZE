@@ -6,6 +6,10 @@ import java.sql.DriverManager;
 public class databaseConnector {
     public Connection databaseLink;
 
+    /**
+     * gets the connection to the database.
+     * @return the database link.
+     */
     public Connection getConnection(){
         String databaseName = "aze_db";
         String databaseUser = "root";

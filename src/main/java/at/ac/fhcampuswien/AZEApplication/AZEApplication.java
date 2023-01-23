@@ -7,7 +7,14 @@ import javafx.stage.Stage;
 
 import java.io.IOException;
 
+
 public class AZEApplication extends Application {
+
+    /**
+     * Entry point of application, the start method
+     * @param stage the primary stage for this application, onto which the application scene can be set.
+     * @throws IOException
+     */
     @Override
     public void start(Stage stage) throws IOException {
         FXMLLoader fxmlLoader = new FXMLLoader(AZEApplication.class.getResource("login.fxml"));
@@ -17,6 +24,10 @@ public class AZEApplication extends Application {
         stage.show();
     }
 
+    /**
+     * The main method of the app
+     * @param args not necessary for this app.
+     */
     public static void main(String[] args) {
         launch();
     }

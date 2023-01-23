@@ -36,6 +36,11 @@ public class userDashboard2Controller implements Initializable{
     @FXML private TextField commentTextField;
     private final String[] eventType = {"come", "Go", "Home-office start","Home-office end"};
 
+    /**
+     * logs out. and goes to main log in page.
+     * @param event can be ignored.
+     * @throws IOException which is thrown if something happens.
+     */
     @FXML
     protected void closeButtonOnClick(ActionEvent event) throws IOException {
         user.changeName(""); //for it to 'log out and forget the username'
@@ -45,6 +50,11 @@ public class userDashboard2Controller implements Initializable{
         registerStage.setScene(new Scene(root, 800, 588));
     }
 
+    /**
+     * Goes to fast coverage page.
+     * @param event can be ignored.
+     * @throws IOException which is thrown if something happens.
+     */
     @FXML
     protected void fastCoverageButtonOnClick(ActionEvent event) throws IOException {
         Parent root = FXMLLoader.load(Objects.requireNonNull(getClass().getResource("userDashboard.fxml")));
@@ -52,6 +62,11 @@ public class userDashboard2Controller implements Initializable{
         registerStage.setScene(new Scene(root, 800, 588));
     }
 
+    /**
+     * Goes to time sheet page.
+     * @param event can be ignored.
+     * @throws IOException which is thrown if something happens.
+     */
     @FXML
     protected void timesheetButtonOnClick(ActionEvent event) throws IOException {
         //user.changeName(""); //for it to 'log out and forget the username'
@@ -61,6 +76,11 @@ public class userDashboard2Controller implements Initializable{
         registerStage.setScene(new Scene(root, 800, 588));
     }
 
+    /**
+     * On button click: Gets the data from the text fields. Prepared the insert Statement and calls the validation method.
+     * @param event can be ignored.
+     * @throws SQLException which is thrown if something happens.
+     */
     @FXML
     protected void saveDetailedCoverageButtonOnClick(ActionEvent event) throws SQLException {
         String username = user.getUsername();
@@ -88,6 +108,12 @@ public class userDashboard2Controller implements Initializable{
         timeTextField.setText("");
     }
 
+    /**
+     * checks if all data entered is in the right form then prints message accordingly.
+     * @param formattedDateTime The formatted value.
+     * @param insertQuery The insert query.
+     * @throws SQLException sql Exception.
+     */
     private void validateQuery(String formattedDateTime, String insertQuery) throws SQLException {
         if (isValidDate(formattedDateTime) && isNotInFuture(formattedDateTime)){
             databaseConnector connector = new databaseConnector();
@@ -105,6 +131,11 @@ public class userDashboard2Controller implements Initializable{
         }
     }
 
+    /**
+     * Checks if the date is in the future.
+     * @param formattedDateTime
+     * @return boolean; if the date is in the future.
+     */
     private boolean isNotInFuture(String formattedDateTime) {
         boolean result = false;
         try {
@@ -115,10 +146,25 @@ public class userDashboard2Controller implements Initializable{
         return result;
     }
 
+    /**
+     * Regex expression to check if the date time string is the fight format.
+     * @param date
+     * @return
+     */
     public static boolean isValidDate(String date) {
         return date.matches("\\d{4}-\\d{2}-\\d{2} \\d{2}:\\d{2}:\\d{2}");
     }
 
+    /**
+     * Initializes the stage to show the image, and gets the items of the drop-down.
+     * @param location
+     * The location used to resolve relative paths for the root object, or
+     * {@code null} if the location is not known.
+     *
+     * @param resources
+     * The resources used to localize the root object, or {@code null} if
+     * the root object was not localized.
+     */
     @Override
     public void initialize(URL location, ResourceBundle resources) {
         //load the picture from images.
@@ -131,10 +177,17 @@ public class userDashboard2Controller implements Initializable{
         eventChoiceBox2.setOnAction(this::getEventType);
     }
 
+    /**
+     * Gets the drop-down menu chosen event.
+     * @param event can be ignored.
+     */
     private void getEventType(ActionEvent event) {
        String eventType = eventChoiceBox2.getValue();
     }
 
+    /**
+     * @param event not used, can be ignored.
+     */
     public void getDate(ActionEvent event) {
         LocalDate date = datePicker.getValue();
     }

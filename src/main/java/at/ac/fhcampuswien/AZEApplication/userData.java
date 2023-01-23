@@ -9,6 +9,10 @@ public class userData {
         this.comment = comment;
     }
 
+    /**
+     * Getters and setters for the timesheet table user's info.
+     */
+
     public String getUsername(){
         return username;
     }
