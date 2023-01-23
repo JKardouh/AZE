@@ -52,8 +52,7 @@ public class registerController implements Initializable {
 
     /**
      * Goes back to log in page (like a go back button).
-     * @param event
-     * @throws IOException
+     * @throws IOException which is thrown if something happens.
      */
     @FXML
     protected void closeButtonOnClick(ActionEvent event) throws IOException {
@@ -64,8 +63,7 @@ public class registerController implements Initializable {
 
     /**
      * Handles the register logic with the text fields. and prints status for confirmation.
-     * @param event
-     * @throws SQLException
+     * @throws SQLException which is thrown if something happens.
      */
     public void registerButtonOnClick(ActionEvent event) throws SQLException {
         if(passwordTextField.getText().equals(confirmPasswordTextField.getText()) && !firstnameTextField.getText().isBlank() && !lastnameTextField.getText().isBlank() && !usernameTextField.getText().isBlank() && !passwordTextField.getText().isBlank()){
@@ -95,7 +93,7 @@ public class registerController implements Initializable {
 
     /**
      * Registers the employee text field inputted info through database connection.
-     * @throws SQLException
+     * @throws SQLException which is thrown if something happens.
      */
     public void registerEmployee() throws SQLException {
         confirmPasswordLabel.setText("");

@@ -148,8 +148,8 @@ public class userDashboard2Controller implements Initializable{
 
     /**
      * Regex expression to check if the date time string is the fight format.
-     * @param date
-     * @return
+     * @param date The date string.
+     * @return boolean if date matches or not.
      */
     public static boolean isValidDate(String date) {
         return date.matches("\\d{4}-\\d{2}-\\d{2} \\d{2}:\\d{2}:\\d{2}");
@@ -179,14 +179,13 @@ public class userDashboard2Controller implements Initializable{
 
     /**
      * Gets the drop-down menu chosen event.
-     * @param event can be ignored.
      */
     private void getEventType(ActionEvent event) {
        String eventType = eventChoiceBox2.getValue();
     }
 
     /**
-     * @param event not used, can be ignored.
+     * Gets the date value.
      */
     public void getDate(ActionEvent event) {
         LocalDate date = datePicker.getValue();

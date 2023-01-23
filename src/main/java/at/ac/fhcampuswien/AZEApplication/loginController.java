@@ -65,9 +65,8 @@ public class loginController implements Initializable {
 
     /**
      * Checks if password text field is empty, and links to validate login method.
-     * @param event can be ignored.
-     * @throws SQLException
-     * @throws IOException
+     * @throws SQLException which is thrown if something happens.
+     * @throws IOException which is thrown if something happens.
      */
     public void loginButtonOnClick(ActionEvent event) throws SQLException, IOException {
         if(!usernameTextField.getText().isBlank() && !passwordTextField.getText().isBlank()) ValidateLogin();
@@ -76,8 +75,8 @@ public class loginController implements Initializable {
 
     /**
      * validates login and checks if login credentials are already in the database. (if search for username and password result == 1 then it exists)
-     * @throws SQLException
-     * @throws IOException
+     * @throws SQLException which is thrown if something happens.
+     * @throws IOException which is thrown if something happens.
      */
     @FXML
     protected void ValidateLogin() throws SQLException, IOException {
@@ -100,7 +99,7 @@ public class loginController implements Initializable {
 
     /**
      * After log in, a new user dashboard scene is created. this leads to it.
-     * @throws IOException
+     * @throws IOException which is thrown if something happens.
      */
     private void CreateUserDashboard() throws IOException {
         Parent root = FXMLLoader.load(Objects.requireNonNull(getClass().getResource("userDashboard.fxml")));
@@ -110,8 +109,7 @@ public class loginController implements Initializable {
 
     /**
      * Goes to the page where user can register other users and enter their data.
-     * @param event
-     * @throws IOException
+     * @throws IOException which is thrown if something happens.
      */
     public void registerButtonOnClick(ActionEvent event) throws IOException {
         //createAccountForm
